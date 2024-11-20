@@ -1,0 +1,39 @@
+分析下面代码片段中“当前类的代码”及其依赖的 “关联的父类链”、“关联的变量”和“其他代码”，
+根据代码片段间的调用过程分析是否有prompt 产生，如果有请生成对应的原始prompt并使用```形式的block表示。
+注意：
+1. 如果代码中没有prompt相关内容不要创造prompt。
+2. 不要使用代码片段作为prompt。
+2. 如果有多种可能的prompt 请全部输出。
+3. 不要输出代码片段作为prompt表示。
+4. 相关解释性内容使用中文表示。
+5. 如果存在if else 则输出所有可能的prompt，不要输出中间分析过程。
+please think step by step。Do not output middle processing info.
+
+代码片段：
+```
+{class类集合}
+
+var uge = R(() => {
+    "use strict";
+    /**
+     * VGe函数用于创建虚拟 DOM 对象。
+     * @param {string} n - 节点类型（例如 'div', 'span'）
+     * @param {object} e - 节点的属性对象
+     * @param {...any} t - 子节点，可以是其他虚拟 DOM 对象或者是原始文本
+     * @return {object} 一个表示虚拟 DOM 的对象
+     */
+    function VGe(n, e, ...t) {return {ctor: n, props: e, children: t.flat()}}
+
+    /**
+     * lge函数用于表示片段类型，不应被调用。
+     * 调用此函数将抛出错误。
+     * @throws {Error} 总是抛出错误，表示此函数不应被调用
+     */
+    function lge() {throw new Error("This should not be invoked!")}
+    // 为 lge 函数添加一个属性，表示它是一个片段类型
+    lge.isFragment = !0;
+    globalThis.vscpp = VGe;
+    globalThis.vscppf = lge
+});
+```
+返回的prompt：
